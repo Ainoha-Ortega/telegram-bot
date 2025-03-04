@@ -1,10 +1,10 @@
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
 import os
 from datetime import datetime, timedelta
 
-# Token del Bot
-TOKEN = os.getenv("BOT_TOKEN")
+# Token del Bot (Método 1: directo)
+TOKEN = '7822441535:AAEU0WjQYyQ8Gz_1-FIM1vNvVRwVfspNoyU'
 
 # Diccionario de usuarios con nombres y apellidos
 usuarios = {
@@ -73,14 +73,4 @@ def start(update: Update, context: CallbackContext):
 
 def main():
     updater = Updater(TOKEN, use_context=True)
-    dp = updater.dispatcher
-
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, saludo_cliente))
-    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, fuera_de_horario))  # Para manejar fuera de horario
-
-    updater.start_polling()
-    updater.idle()
-
-if __name__ == "__main__":
-    main()
+    dp = upda
